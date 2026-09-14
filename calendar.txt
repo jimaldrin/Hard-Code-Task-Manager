@@ -1,0 +1,62 @@
+export function renderCalendar() {
+    const monthYear = document.querySelector('#month-year');
+    const week = document.querySelector('#week');
+
+    const today = new Date();
+
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+    ];
+
+    const currentDay = today.getDay();
+    const currentDate = today.getDate();
+    const currentMonth = today.getMonth();
+    const currentYear = today.getFullYear();
+
+    const startOfWeek = new Date(today);
+    startOfWeek.setDate(currentDate - currentDay);
+
+    monthYear.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+    for (let i = 0; i < 7; i++) {
+    const date = new Date(startOfWeek);
+    date.setDate(startOfWeek.getDate() + i);
+
+    const day = document.createElement('div');
+    day.classList.add('day');
+
+    const dayName = document.createElement('span');
+    dayName.classList.add('day-name');
+    dayName.textContent = dayNames[date.getDay()];
+
+    const dayNumber = document.createElement('span');
+    dayNumber.classList.add('day-number');
+    dayNumber.textContent = date.getDate();
+
+    if (
+        date.getDate() === today.getDate() &&
+        date.getMonth() === today.getMonth() &&
+        date.getFullYear() === today.getFullYear()
+    ) {
+        day.classList.add('today');
+    }
+
+    day.append(dayName, dayNumber);
+    week.appendChild(day);
+    }
+
+}
+

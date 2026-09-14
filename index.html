@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7f2" />
+    <title>Tasker | Personal task manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand-logo">
+          <i data-lucide="sparkles" class="logo-icon"></i>
+          <span class="brand-name">Tasker</span>
+        </div>
+        <div>
+          <button
+            class="avatar"
+            id="profile-button"
+            type="button"
+            aria-label="Open profile panel"
+          >
+            <span id="avatar-initials">JS</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Search Bar -->
+      <button
+        class="search-bar"
+        id="search-button"
+        type="button"
+        aria-label="Search tasks"
+      >
+        <i data-lucide="search" aria-hidden="true"></i>
+        <span>Search tasks</span>
+      </button>
+
+      <!-- CALENDAR -->
+
+      <section class="calendar">
+        <h2 id="month-year"></h2>
+
+        <div class="week" id="week"></div>
+      </section>
+    </main>
+
+    <!-- SCRIPTS -->
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
