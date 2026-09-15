@@ -19,7 +19,7 @@
     <main class="app-shell">
       <header class="topbar">
         <div class="brand-logo">
-          <i data-lucide="sparkles" class="logo-icon"></i>
+          <i data-lucide="calendar-check" class="logo-icon"></i>
           <span class="brand-name">Tasker</span>
         </div>
         <div>
@@ -52,6 +52,82 @@
 
         <div class="week" id="week"></div>
       </section>
+
+      <section class="focus-panel" aria-label="Today's progress">
+        <div class="focus-copy">
+          <p class="eyebrow">Daily Focus</p>
+          <p class="task-count">
+            <strong>
+              <span id="completed-count">0</span>
+              out of
+              <span id="total-count">0</span>
+              tasks complete
+            </strong>
+          </p>
+
+          <p class="muted">a little progress adds up</p>
+        </div>
+
+        <div
+          class="focus-ring"
+          id="focus-ring"
+          aria-label="50 percent complete"
+        >
+          <span>
+            <span id="progress-percentage">50</span><small>%</small>
+          </span>
+        </div>
+      </section>
+
+      <button id="create-button"><i data-lucide="plus"></i></button>
+
+      <!-- CREATE BUTTON -->
+      <form id="add-form" class="dialog-card">
+        <p>New task</p>
+        <h2>Add a task</h2>
+
+        <label class="dialog-label" for="add-title"> Task name </label>
+        <input type="text" name="" id="add-title" class="dialog-input" />
+
+        <label class="dialog-label" for="add-note">
+          Add note
+          <span>(optional)</span>
+        </label>
+        <textarea name="note" id="add-note" class="dialog-input"></textarea>
+
+        <label class="dialog-label" for="add-title"> Task name </label>
+        <input type="text" name="" id="add-title" class="dialog-input" />
+
+        <label for="add-category" class="dialog-label">Category</label>
+        <select class="dialog-input" id="add-category">
+          <option value="Priority">Priority</option>
+          <option value="General">General</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Home">Home</option>
+          <option value="Learning">Learning</option>
+          <option value="Health">Health</option>
+          <option value="Finance">Finance</option>
+        </select>
+
+        <label for="add-date" class="dialog-label">Date created</label>
+        <input
+          type="date"
+          name="date-created"
+          id="date-created"
+          class="dialog-input"
+        />
+
+        <label for="due-date" class="dialog-label">Due date</label>
+        <input type="date" name="due-date" id="due-date" class="dialog-input" />
+
+        <div class="dialog-actions">
+          <button class="dialog-button secondary" id="cancel-add" type="button">
+            Cancel
+          </button>
+          <button class="dialog-button primary" type="submit">Add task</button>
+        </div>
+      </form>
     </main>
 
     <!-- SCRIPTS -->
