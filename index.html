@@ -79,55 +79,95 @@
         </div>
       </section>
 
-      <button id="create-button"><i data-lucide="plus"></i></button>
+      <button id="create-button">
+        <i class="ph ph-plus"></i>
+      </button>
 
       <!-- CREATE BUTTON -->
-      <form id="add-form" class="dialog-card">
-        <p>New task</p>
-        <h2>Add a task</h2>
+      <div class="modal hidden">
+        <div class="modal-overlay hidden"></div>
+        <form id="add-form" class="dialog-card">
+          <div id="create-form-title">
+            <div>
+              <p class="dialog-label" id="new-task-text">New task</p>
+              <h2 id="add-task-text">Add a task</h2>
+            </div>
+          </div>
 
-        <label class="dialog-label" for="add-title"> Task name </label>
-        <input type="text" name="" id="add-title" class="dialog-input" />
+          <label class="dialog-label" for="add-title"> Task name </label>
+          <input
+            type="text"
+            name=""
+            id="add-title"
+            class="dialog-input"
+            placeholder="Add task name..."
+            required
+          />
 
-        <label class="dialog-label" for="add-note">
-          Add note
-          <span>(optional)</span>
-        </label>
-        <textarea name="note" id="add-note" class="dialog-input"></textarea>
+          <label class="dialog-label" for="add-note">
+            Add note
+            <span>(optional)</span>
+          </label>
+          <textarea
+            name="note"
+            id="add-note"
+            class="dialog-input"
+            maxlength="200"
+            placeholder="Add a helpful detail..."
+          ></textarea>
 
-        <label class="dialog-label" for="add-title"> Task name </label>
-        <input type="text" name="" id="add-title" class="dialog-input" />
+          <label for="add-category" class="dialog-label">Category</label>
 
-        <label for="add-category" class="dialog-label">Category</label>
-        <select class="dialog-input" id="add-category">
-          <option value="Priority">Priority</option>
-          <option value="General">General</option>
-          <option value="Work">Work</option>
-          <option value="Personal">Personal</option>
-          <option value="Home">Home</option>
-          <option value="Learning">Learning</option>
-          <option value="Health">Health</option>
-          <option value="Finance">Finance</option>
-        </select>
+          <div class="select-wrapper">
+            <select class="dialog-input" id="add-category">
+              <option value="Priority">Priority</option>
+              <option value="General">General</option>
+              <option value="Work">Work</option>
+              <option value="Personal">Personal</option>
+              <option value="Home">Home</option>
+              <option value="Learning">Learning</option>
+              <option value="Health">Health</option>
+              <option value="Finance">Finance</option>
+            </select>
 
-        <label for="add-date" class="dialog-label">Date created</label>
-        <input
-          type="date"
-          name="date-created"
-          id="date-created"
-          class="dialog-input"
-        />
+            <i class="ph ph-caret-down"></i>
+          </div>
 
-        <label for="due-date" class="dialog-label">Due date</label>
-        <input type="date" name="due-date" id="due-date" class="dialog-input" />
+          <div id="date-inputs">
+            <div>
+              <label for="add-date" class="dialog-label">Date created</label>
+              <input
+                type="date"
+                name="date-created"
+                id="date-created"
+                class="dialog-input"
+              />
+            </div>
 
-        <div class="dialog-actions">
-          <button class="dialog-button secondary" id="cancel-add" type="button">
-            Cancel
-          </button>
-          <button class="dialog-button primary" type="submit">Add task</button>
-        </div>
-      </form>
+            <div>
+              <label for="due-date" class="dialog-label">Due date</label>
+              <input
+                type="date"
+                name="due-date"
+                id="due-date"
+                class="dialog-input"
+              />
+            </div>
+          </div>
+          <div class="dialog-actions">
+            <button
+              class="dialog-button secondary"
+              id="close-button"
+              type="button"
+            >
+              Cancel
+            </button>
+            <button class="dialog-button primary" type="submit" id="add-task">
+              Add task
+            </button>
+          </div>
+        </form>
+      </div>
     </main>
 
     <!-- SCRIPTS -->

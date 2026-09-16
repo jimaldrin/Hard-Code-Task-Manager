@@ -1,33 +1,24 @@
-import { renderCalendar } from './calendar.js';
+import { renderCalendar } from "./calendar.js";
+import { initTaskForm, openTaskForm } from "./task-form.js";
+import { tasks } from "./tasks.js";
 
-const focusRing = document.querySelector('#focus-ring');
+import "@phosphor-icons/web/regular";
 
-const progressPercentage = document.querySelector('#progress-percentage');
+const focusRing = document.querySelector("#focus-ring");
 
-const completedCount = document.querySelector('#completed-count');
+const progressPercentage = document.querySelector("#progress-percentage");
 
-const totalCount = document.querySelector('#total-count');
+const completedCount = document.querySelector("#completed-count");
+
+const totalCount = document.querySelector("#total-count");
+
+const createButton = document.querySelector("#create-button");
 
 renderCalendar();
 
 lucide.createIcons();
 
 function updateProgress() {
-  const tasks = JSON.parse(localStorage.getItem('tasks')) || [
-    {
-      title: 'Code',
-      completed: false,
-    },
-    {
-      title: 'Vibe',
-      completed: true,
-    },
-    {
-      title: 'Vibe',
-      completed: true,
-    },
-  ];
-
   const total = tasks.length;
   const completed = tasks.filter((task) => task.completed).length;
 
@@ -51,4 +42,9 @@ function updateProgress() {
   totalCount.textContent = total;
 }
 
+createButton.addEventListener("click", () => {
+  openTaskForm();
+});
+
+initTaskForm();
 updateProgress();
