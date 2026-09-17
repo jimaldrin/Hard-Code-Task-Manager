@@ -83,7 +83,7 @@
         <i class="ph ph-plus"></i>
       </button>
 
-      <!-- CREATE BUTTON -->
+      <!-- Add Task Form -->
       <div class="modal hidden">
         <div class="modal-overlay hidden"></div>
         <form id="add-form" class="dialog-card">
@@ -167,6 +167,28 @@
             </button>
           </div>
         </form>
+      </div>
+
+      <div class="task-filters">
+        <button class="filter active" id="all-button">
+          <span class="filter-label">All</span>
+          <span class="filter-count" id="all-number">0</span>
+        </button>
+
+        <button class="filter" id="inProgress-button">
+          <span class="filter-label">In progress</span>
+          <span class="filter-count" id="progress-number">0</span>
+        </button>
+
+        <button class="filter" id="completed-button">
+          <span class="filter-label">Completed</span>
+          <span class="filter-count" id="completed-number">0</span>
+        </button>
+
+        <button class="filter" id="category-button">
+          <span class="filter-label">Category</span>
+          <span class="filter-count" id="category-number">0</span>
+        </button>
       </div>
     </main>
 

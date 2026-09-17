@@ -1,3 +1,5 @@
+import { updateFilterCount } from "./filter.js";
+import { updateProgress } from "./progress.js";
 import { tasks } from "./tasks.js";
 
 const addForm = document.getElementById("add-form");
@@ -40,6 +42,8 @@ export function initTaskForm() {
 
     addForm.reset();
     modal.classList.add("hidden");
+    updateProgress();
+    updateFilterCount();
   });
 }
 
