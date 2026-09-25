@@ -1,5 +1,3 @@
-import { saveCategory } from './categories';
-
 const addCategory = document.querySelector('#add-category');
 const categoryModal = document.querySelector('.category-modal');
 const categoryCancel = document.querySelector('#category-cancel');
