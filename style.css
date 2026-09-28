@@ -487,10 +487,17 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 .section-title {
   font-size: small;
+}
+
+.section-title h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .right-side-list p {
@@ -630,8 +637,25 @@ body {
 
 /* CATEGORY CARDS DESIGN */
 
+.category-grid {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: 170px;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: none;
+}
+
+.category-grid::-webkit-scrollbar {
+  display: none;
+}
+
 .category-card {
   display: grid;
+  width: 170px;
+  height: 100%;
 }
 
 .category-header {
@@ -640,21 +664,32 @@ body {
   border: 1px solid var(--line);
   border-radius: 15px;
   padding: 10px;
-  max-width: 180px;
+  width: 100%;
+  height: 100%;
 }
 
 .category-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
+  min-width: 0;
 }
 
-.category-name,
+.category-name {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
 .ph-lock .ph {
   margin: 0;
 }
 
 .ph-lock {
+  flex-shrink: 0;
   padding: 2.5px;
   border-radius: 5px;
   background-color: var(--line);
@@ -665,6 +700,7 @@ body {
 .category-progress {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   margin-top: 20px;
 }
 
@@ -679,15 +715,15 @@ body {
 
 .category-percentage {
   font-size: x-large;
+  line-height: 1;
 }
 
 .category-completion {
   display: flex;
   align-items: center;
-  font-size: x-small;
-  display: flex;
-  align-items: flex-end;
   gap: 3px;
+  font-size: x-small;
+  line-height: 1;
 }
 
 .progress-bar {
@@ -705,13 +741,31 @@ body {
   border-radius: 999px;
 }
 
-.category-addbox {
-  padding: 20px;
-  border: 2px dashed var(--line);
-  border-radius: 10px;
-  appearance: none;
-  margin: 10px;
-  background-color: var(--paper);
+.category-add-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 100%;
+  min-height: 104px;
+  border: 1.5px dashed var(--line);
+  border-radius: 15px;
+  background-color: #f8fafc;
+  color: var(--muted);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.category-add-card:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+  color: var(--ink);
+}
+
+.category-add-card .ph {
+  font-size: 20px;
+  color: var(--line);
 }
 
 @media (min-width: 641px) {

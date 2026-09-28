@@ -125,14 +125,8 @@
 
           <div class="select-wrapper">
             <select class="dialog-input" id="add-task-category">
-              <option value="Priority">Priority</option>
+              <!-- Options is listed here -->
               <option value="General">General</option>
-              <option value="Work">Work</option>
-              <option value="Personal">Personal</option>
-              <option value="Home">Home</option>
-              <option value="Learning">Learning</option>
-              <option value="Health">Health</option>
-              <option value="Finance">Finance</option>
             </select>
 
             <i class="ph ph-caret-down"></i>
@@ -329,6 +323,10 @@
         </div>
 
         <!-- GENERAL CATEGORY -->
+        <div class="category-grid" id="category-grid">
+          <!-- Generated category cards will appear here -->
+        </div>
+
         <template id="category-template">
           <article class="category-card">
             <header class="category-header">

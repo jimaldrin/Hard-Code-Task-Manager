@@ -1,3 +1,6 @@
+import { renderCategories } from './categoryUI.js';
+import { updateFilterCount } from './filter.js';
+
 // ============================================================
 // STORAGE
 // ============================================================
@@ -28,6 +31,7 @@ export let categories = JSON.parse(localStorage.getItem('categories')) || [
 const categoryForm = document.querySelector('#category-form');
 const categoryName = document.querySelector('#category-name');
 const categoryIcon = document.querySelector('#category-icon');
+const categoryModal = document.querySelector('.category-modal');
 
 // ============================================================
 // CATEGORY FUNCTIONS
@@ -76,6 +80,11 @@ export function saveCategory() {
     console.log(category);
     console.log(categories);
     categoryForm.reset();
+
+    categoryModal.classList.add('hidden');
+
+    renderCategories();
+    updateFilterCount();
   });
 }
 
