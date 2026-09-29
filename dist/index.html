@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7f2" />
+    <title>Tasker | Personal task manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" crossorigin src="/assets/index-CyHMgtWh.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bm2U-18d.css">
+  </head>
+
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand-logo">
+          <i data-lucide="calendar-check" class="logo-icon"></i>
+          <span class="brand-name">Tasker</span>
+        </div>
+
+        <div>
+          <button
+            class="avatar"
+            id="profile-button"
+            type="button"
+            aria-label="Open profile panel"
+          >
+            <span id="avatar-initials">JS</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Search Bar -->
+      <button
+        class="search-bar"
+        id="search-button"
+        type="button"
+        aria-label="Search tasks"
+      >
+        <i data-lucide="search" aria-hidden="true"></i>
+        <span>Search tasks</span>
+      </button>
+
+      <!-- CALENDAR -->
+      <section class="calendar">
+        <h2 id="month-year"></h2>
+        <div class="week" id="week"></div>
+      </section>
+
+      <!-- BANNER -->
+
+      <section class="focus-panel" aria-label="Today's progress">
+        <div class="focus-copy">
+          <p class="eyebrow">Daily Focus</p>
+
+          <p class="task-count">
+            <strong>
+              <span id="completed-count">0</span>
+              out of
+              <span id="total-count">0</span>
+              tasks complete
+            </strong>
+          </p>
+
+          <!-- <p class="muted">a little progress adds up</p> -->
+        </div>
+
+        <div
+          class="focus-ring"
+          id="focus-ring"
+          aria-label="50 percent complete"
+        >
+          <span>
+            <span id="progress-percentage">50</span><small>%</small>
+          </span>
+        </div>
+      </section>
+
+      <button id="create-button">
+        <i class="ph ph-plus"></i>
+      </button>
+
+      <!-- Add Task Form -->
+      <div class="modal hidden">
+        <div class="modal-overlay hidden"></div>
+
+        <form id="add-form" class="dialog-card">
+          <div id="create-form-title">
+            <div>
+              <p class="dialog-label" id="new-task-text">New task</p>
+              <h2 id="add-task-text">Add a task</h2>
+            </div>
+          </div>
+
+          <label class="dialog-label" for="add-title">Task name</label>
+
+          <input
+            type="text"
+            name=""
+            id="add-title"
+            class="dialog-input"
+            placeholder="Add task name..."
+            required
+          />
+
+          <label class="dialog-label" for="add-note">
+            Add note
+            <span>(optional)</span>
+          </label>
+
+          <textarea
+            name="note"
+            id="add-note"
+            class="dialog-input"
+            maxlength="200"
+            placeholder="Add a helpful detail..."
+          ></textarea>
+
+          <label for="add-category" class="dialog-label">Category</label>
+
+          <div class="select-wrapper">
+            <select class="dialog-input" id="add-task-category">
+              <!-- Options is listed here -->
+              <option value="General">General</option>
+            </select>
+
+            <i class="ph ph-caret-down"></i>
+          </div>
+
+          <div id="date-inputs">
+            <div>
+              <label for="date-created" class="dialog-label">
+                Date created
+              </label>
+
+              <input
+                type="date"
+                name="date-created"
+                id="date-created"
+                class="dialog-input"
+              />
+            </div>
+
+            <div>
+              <label for="due-date" class="dialog-label">Due date</label>
+
+              <input
+                type="date"
+                name="due-date"
+                id="due-date"
+                class="dialog-input"
+              />
+            </div>
+          </div>
+
+          <div class="dialog-actions">
+            <button
+              class="dialog-button secondary"
+              id="close-button"
+              type="button"
+            >
+              Cancel
+            </button>
+
+            <button class="dialog-button primary" type="submit" id="add-task">
+              Add task
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Add Category Form -->
+      <div class="category-modal hidden">
+        <div class="category-modal-overlay hidden"></div>
+
+        <form id="category-form" class="dialog-card category-dialog-card">
+          <div id="category-form-title">
+            <div>
+              <p class="dialog-label">Category settings</p>
+              <h2>Add category</h2>
+            </div>
+          </div>
+
+          <!-- Category Name -->
+          <label for="category-name" class="dialog-label">
+            Category name
+          </label>
+
+          <input
+            type="text"
+            id="category-name"
+            class="dialog-input"
+            placeholder="Add category name..."
+            maxlength="30"
+            required
+          />
+
+          <!-- Icon -->
+          <label for="category-icon" class="dialog-label category-form-label">
+            Icon
+          </label>
+
+          <div class="select-wrapper">
+            <select class="dialog-input" id="category-icon">
+              <option value="folder">Folder</option>
+              <option value="book">Book</option>
+              <option value="briefcase">Briefcase</option>
+              <option value="house">House</option>
+              <option value="heart">Heart</option>
+              <option value="dumbbell">Dumbbell</option>
+            </select>
+
+            <i class="ph ph-caret-down"></i>
+          </div>
+
+          <!-- Color -->
+          <p class="dialog-label category-form-label">Color</p>
+
+          <div class="category-colors">
+            <label class="color-option">
+              <input type="radio" name="category-color" value="red" checked />
+              <span class="color-circle color-red"></span>
+            </label>
+
+            <label class="color-option">
+              <input type="radio" name="category-color" value="orange" />
+              <span class="color-circle color-orange"></span>
+            </label>
+
+            <label class="color-option">
+              <input type="radio" name="category-color" value="yellow" />
+              <span class="color-circle color-yellow"></span>
+            </label>
+
+            <label class="color-option">
+              <input type="radio" name="category-color" value="green" />
+              <span class="color-circle color-green"></span>
+            </label>
+
+            <label class="color-option">
+              <input type="radio" name="category-color" value="blue" />
+              <span class="color-circle color-blue"></span>
+            </label>
+
+            <label class="color-option">
+              <input type="radio" name="category-color" value="purple" />
+              <span class="color-circle color-purple"></span>
+            </label>
+          </div>
+
+          <!-- Actions -->
+          <div class="dialog-actions">
+            <button
+              class="dialog-button secondary"
+              id="category-cancel"
+              type="button"
+            >
+              Cancel
+            </button>
+
+            <button
+              class="dialog-button primary"
+              type="submit"
+              id="save-category"
+            >
+              Save category
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="task-filters">
+        <button class="filter active" id="all-button">
+          <span class="filter-label">All</span>
+          <span class="filter-count" id="all-number">0</span>
+        </button>
+
+        <button class="filter" id="inProgress-button">
+          <span class="filter-label">In progress</span>
+          <span class="filter-count" id="progress-number">0</span>
+        </button>
+
+        <button class="filter" id="completed-button">
+          <span class="filter-label">Completed</span>
+          <span class="filter-count" id="completed-number">0</span>
+        </button>
+
+        <button class="filter" id="category-button">
+          <span class="filter-label">Category</span>
+          <span class="filter-count" id="category-number">0</span>
+        </button>
+      </div>
+
+      <!-- TASK LIST SECTIONS -->
+      <section id="task-list-section">
+        <!-- CATEGORY LIST -->
+        <div id="category-section" class="section-list">
+          <div class="section-title">
+            <h2>Category</h2>
+          </div>
+
+          <div class="right-side-list">
+            <div id="add-category" class="task-list-actions">
+              <p>Add</p>
+              <i class="ph ph-plus"></i>
+            </div>
+
+            <div id="view-all" class="task-list-actions">
+              <p>View All</p>
+              <i class="ph ph-arrow-up-right"></i>
+            </div>
+
+            <div class="show-hide-arrow">
+              <i class="ph ph-caret-right"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- GENERAL CATEGORY -->
+        <div class="category-grid" id="category-grid">
+          <!-- Generated category cards will appear here -->
+        </div>
+
+        <template id="category-template">
+          <article class="category-card">
+            <header class="category-header">
+              <div class="category-title">
+                <strong class="category-name"></strong>
+                <i class="category-icon"></i>
+              </div>
+
+              <div class="category-progress">
+                <strong class="category-percentage">0%</strong>
+
+                <div class="category-completion">
+                  <span class="category-count">0/0</span>
+                  <i class="ph ph-check"></i>
+                </div>
+              </div>
+
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
+              </div>
+            </header>
+          </article>
+        </template>
+
+        <!-- IN PROGRESS LIST -->
+        <div id="in-progress-section" class="section-list">
+          <div class="section-title">
+            <h2>In Progress</h2>
+          </div>
+
+          <div class="right-side-list">
+            <div class="list-status">
+              <p>0</p>
+              <p>active</p>
+            </div>
+
+            <div class="show-hide-arrow">
+              <i class="ph ph-caret-right"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMPLETED LIST -->
+        <div id="completed-section" class="section-list">
+          <div class="section-title">
+            <h2>Completed</h2>
+          </div>
+
+          <div class="right-side-list">
+            <div class="list-status">
+              <p>0</p>
+              <p>finished</p>
+            </div>
+
+            <div class="show-hide-arrow">
+              <i class="ph ph-caret-right"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- SCRIPTS -->
+  </body>
+</html>

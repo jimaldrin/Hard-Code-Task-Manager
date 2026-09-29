@@ -684,6 +684,12 @@ body {
   min-width: 0;
 }
 
+.category-icon {
+  flex-shrink: 0;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
 .ph-lock .ph {
   margin: 0;
 }

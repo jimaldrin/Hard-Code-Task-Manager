@@ -12,17 +12,22 @@ import { updateFilterCount } from './filter.js';
  * If no categories exist yet, a default "General" category
  * is created.
  */
-export let categories = JSON.parse(localStorage.getItem('categories')) || [
-  {
-    id: crypto.randomUUID(),
-    name: 'General',
-    icon: null,
-    isDefault: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    deletedAt: null,
-  },
-];
+export let categories = (
+  JSON.parse(localStorage.getItem('categories')) || [
+    {
+      id: crypto.randomUUID(),
+      name: 'General',
+      icon: 'folder',
+      isDefault: true,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      deletedAt: null,
+    },
+  ]
+).map((category) => ({
+  ...category,
+  icon: category.icon || 'folder',
+}));
 
 // ============================================================
 // DOM SELECTORS
