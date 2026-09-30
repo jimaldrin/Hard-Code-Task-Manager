@@ -1,4 +1,4 @@
-@import '@phosphor-icons/web/regular';
+@import "@phosphor-icons/web/regular";
 
 * {
   box-sizing: border-box;
@@ -9,7 +9,7 @@ body {
   min-width: 320px;
   background: #ffffff;
   color: var(--ink);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 :root {
@@ -49,6 +49,15 @@ body {
 
   display: grid;
   place-items: center;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#create-button:hover {
+  background-color: #1a44c2;
+  box-shadow: 0 6px 16px rgba(37, 86, 234, 0.4);
 }
 
 #create-button .ph {
@@ -68,14 +77,15 @@ body {
   align-items: center;
   gap: 7px;
   font:
-    700 15px 'Inter',
+    700 15px "Inter",
     sans-serif;
   letter-spacing: -0.5px;
+  cursor: pointer;
 }
 
 .brand-name {
   font:
-    700 20px 'Inter',
+    700 20px "Inter",
     sans-serif;
 }
 
@@ -101,11 +111,21 @@ body {
   align-items: center;
   border-radius: 12px;
   border: 1px solid var(--line);
+  background: transparent;
   width: 100%;
   padding: 10px 15px;
   margin-top: 20px;
   gap: 10px;
   color: var(--muted);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search-bar:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(37, 86, 234, 0.08);
 }
 
 /* CALENDAR */
@@ -137,6 +157,12 @@ body {
   padding: 8px 4px;
   border-radius: 12px;
   color: var(--muted);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.day:hover:not(.today) {
+  background-color: #f1f5f9;
 }
 
 .day-name {
@@ -152,6 +178,11 @@ body {
   background-color: var(--primary);
   font-weight: bolder;
   font-weight: 900;
+  transition: box-shadow 0.2s ease;
+}
+
+.day.today:hover {
+  box-shadow: 0 4px 12px rgba(37, 86, 234, 0.35);
 }
 
 .day.today .day-name,
@@ -202,7 +233,7 @@ body {
 }
 
 .focus-ring::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 56px;
   height: 56px;
@@ -214,7 +245,7 @@ body {
   position: relative;
   z-index: 1;
   font:
-    600 18px 'Inter',
+    600 18px "Inter",
     sans-serif;
 }
 
@@ -470,6 +501,17 @@ body {
   border: 1.5px solid var(--line);
   background-color: #fff;
   color: var(--muted);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.task-filters .filter:hover:not(.active) {
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 2px 8px rgba(37, 86, 234, 0.15);
 }
 
 .task-filters::-webkit-scrollbar {
@@ -479,6 +521,12 @@ body {
 .filter.active {
   background-color: var(--primary);
   color: #ffffff;
+  border-color: var(--primary);
+  transition: box-shadow 0.2s ease;
+}
+
+.filter.active:hover {
+  box-shadow: 0 3px 10px rgba(37, 86, 234, 0.3);
 }
 
 /* TASK SECTION */
@@ -512,18 +560,41 @@ body {
 }
 
 .task-list-actions {
+  display: flex;
+  align-items: center;
   gap: 2px;
   color: var(--mint-deep);
   font-weight: 700;
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.task-list-actions:hover {
+  background-color: #f1f5f9;
 }
 
 .list-status {
   display: flex;
   gap: 5px;
-  color: --;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.list-status p {
+  margin: 0;
+}
+
+.list-status:hover {
+  color: #000000;
 }
 
 .show-hide-arrow {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .ph-caret-right {
@@ -532,6 +603,19 @@ body {
   background-color: var(--card);
   color: var(--muted);
   border: 1.5px solid var(--line);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.ph-caret-right:hover,
+.show-hide-arrow:hover .ph-caret-right,
+.list-status:hover ~ .show-hide-arrow .ph-caret-right {
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 2px 6px rgba(37, 86, 234, 0.15);
 }
 
 #add-category,
@@ -555,6 +639,15 @@ body {
   border: 1px solid var(--line);
   border-radius: 17px;
   background-color: var(--paper);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 6px 18px rgba(23, 36, 75, 0.08);
 }
 
 .task-content {
@@ -608,11 +701,22 @@ body {
   height: 24px;
 
   padding: 0;
-  border: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
   background: transparent;
 
   color: var(--muted);
   cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.task-more:hover {
+  color: var(--ink);
+  border-color: var(--line);
+  box-shadow: 0 2px 6px rgba(23, 36, 75, 0.06);
 }
 
 .task-more svg {
@@ -633,6 +737,14 @@ body {
 
   background-color: transparent;
   cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.task-checkbox:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(37, 86, 234, 0.15);
 }
 
 /* CATEGORY CARDS DESIGN */
@@ -656,6 +768,7 @@ body {
   display: grid;
   width: 170px;
   height: 100%;
+  cursor: pointer;
 }
 
 .category-header {
@@ -666,6 +779,15 @@ body {
   padding: 10px;
   width: 100%;
   height: 100%;
+  background-color: var(--card);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.category-card:hover .category-header {
+  border-color: var(--primary);
+  box-shadow: 0 4px 14px rgba(23, 36, 75, 0.08);
 }
 
 .category-title {
@@ -760,13 +882,18 @@ body {
   color: var(--muted);
   cursor: pointer;
   box-sizing: border-box;
-  transition: all 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .category-add-card:hover {
   background-color: #f1f5f9;
-  border-color: #94a3b8;
-  color: var(--ink);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 4px 14px rgba(37, 86, 234, 0.1);
 }
 
 .category-add-card .ph {
