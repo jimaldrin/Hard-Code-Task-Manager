@@ -29,8 +29,8 @@ export function initTaskForm() {
     event.preventDefault();
 
     const task = {
-      title: taskName.value,
-      note: addNote.value,
+      title: taskName.value.trim().slice(0, 50),
+      note: addNote.value.trim().slice(0, 150),
       category: categorySelection.value,
       dateCreated: dateCreated.value,
       dueDate: dueDate.value,

@@ -12,8 +12,8 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script type="module" crossorigin src="/assets/index-CPmtpOly.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-C8HnZHOt.css">
+    <script type="module" crossorigin src="/assets/index-DbmdlGVP.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Uh7OKbbd.css">
   </head>
 
   <body>
@@ -106,6 +106,7 @@
             id="add-title"
             class="dialog-input"
             placeholder="Add task name..."
+            maxlength="50"
             required
           />
 
@@ -118,7 +119,7 @@
             name="note"
             id="add-note"
             class="dialog-input"
-            maxlength="200"
+            maxlength="150"
             placeholder="Add a helpful detail..."
           ></textarea>
 
@@ -369,6 +370,36 @@
             </div>
           </div>
         </div>
+
+        <article class="task-card" id="task-card">
+          <div class="task-content">
+            <h3 class="task-title">Code</h3>
+            <p id="task-note" class="task-note">
+              Mag co code lang naman tayo magdamag tas magkakape
+            </p>
+
+            <div class="task-meta">
+              <span class="task-category">General</span>
+              <time class="task-date" datetime="2026-10-01">Oct 1</time>
+            </div>
+          </div>
+
+          <div class="task-actions">
+            <button
+              class="task-menu-button"
+              id="task-menu-button"
+              type="button"
+              aria-label="Task options"
+            >
+              <i class="ph-bold ph-dots-three"></i>
+            </button>
+
+            <label class="task-complete">
+              <input class="task-checkbox" id="task-checkbox" type="checkbox" />
+              <span class="task-checkbox-label"></span>
+            </label>
+          </div>
+        </article>
 
         <!-- COMPLETED LIST -->
         <div id="completed-section" class="section-list">
